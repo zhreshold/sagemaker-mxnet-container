@@ -72,8 +72,11 @@ RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSIO
  && ln -s /usr/local/bin/pip3 /usr/bin/pip \
  && ln -s $(which ${PYTHON}) /usr/local/bin/python
 
+
+# MXNet requires pip 19.3.1 due to being backwards compatible
+# with python2
 RUN ${PIP} --no-cache-dir install --upgrade \
-    pip \
+    pip==19.3.1 \
     setuptools
 
 WORKDIR /
@@ -102,7 +105,7 @@ RUN ${PIP} install --no-cache --upgrade \
     PyYAML==5.1.2 \
     /sagemaker_mxnet_training_toolkit.tar.gz \
     ${MX_URL} \
-    awscli==1.17.1 \
+    awscli \
  && rm /sagemaker_mxnet_training_toolkit.tar.gz
 
 # "channels first" is recommended for keras-mxnet
@@ -116,10 +119,8 @@ RUN mkdir /root/.keras \
 RUN ln -s /dev/null /dev/raw1394
 
 COPY dockerd-entrypoint.py /usr/local/bin/dockerd-entrypoint.py
-COPY deep_learning_container.py /usr/local/bin/deep_learning_container.py
 
-RUN chmod +x /usr/local/bin/dockerd-entrypoint.py \
- && chmod +x /usr/local/bin/deep_learning_container.py
+RUN chmod +x /usr/local/bin/dockerd-entrypoint.py
 
 RUN curl -o /license.txt https://aws-dlc-licenses.s3.amazonaws.com/mxnet/license.txt
 
