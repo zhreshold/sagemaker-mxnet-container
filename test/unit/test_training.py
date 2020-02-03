@@ -16,7 +16,7 @@ from mock import call, MagicMock, patch
 import pytest
 import sagemaker_containers.beta.framework as framework
 
-from sagemaker_mxnet_container import training
+from sagemaker_mxnet import training
 
 MODULE_DIR = 's3://my/bucket'
 MODULE_NAME = 'script_name'
@@ -69,8 +69,8 @@ def distributed_training_env():
 
 @patch('os.environ', {})
 @patch('subprocess.Popen')
-@patch('sagemaker_mxnet_container.training._host_lookup')
-@patch('sagemaker_mxnet_container.training._verify_hosts')
+@patch('sagemaker_mxnet.training._host_lookup')
+@patch('sagemaker_mxnet.training._verify_hosts')
 @patch('sagemaker_containers.beta.framework.modules.download_and_install')
 @patch('sagemaker_containers.beta.framework.entry_point.run')
 def test_train_for_distributed_scheduler(run_entry_point, download_and_install, verify_hosts,
@@ -103,8 +103,8 @@ def test_train_for_distributed_scheduler(run_entry_point, download_and_install, 
 
 @patch('os.environ', {})
 @patch('subprocess.Popen')
-@patch('sagemaker_mxnet_container.training._host_lookup')
-@patch('sagemaker_mxnet_container.training._verify_hosts')
+@patch('sagemaker_mxnet.training._host_lookup')
+@patch('sagemaker_mxnet.training._verify_hosts')
 @patch('sagemaker_containers.beta.framework.modules.download_and_install')
 @patch('sagemaker_containers.beta.framework.entry_point.run')
 def test_train_for_distributed_worker(run_entry_point, download_and_install, verify_hosts,
@@ -142,7 +142,7 @@ def test_train_for_single_machine(run_entry_point, download_and_install,
                                        runner=framework.runner.ProcessRunnerType)
 
 
-@patch('sagemaker_mxnet_container.training.train')
+@patch('sagemaker_mxnet.training.train')
 @patch('sagemaker_containers.beta.framework.training_env')
 def test_main(env, train, single_machine_training_env):
     env.return_value = single_machine_training_env

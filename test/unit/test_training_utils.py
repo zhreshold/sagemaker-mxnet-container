@@ -17,7 +17,7 @@ import os
 
 from mock import Mock, mock_open, patch
 
-from sagemaker_mxnet_container import training_utils
+from sagemaker_mxnet import training_utils
 
 SCHEDULER_HOST = 'host-1'
 WORKER_HOST = 'host-2'
