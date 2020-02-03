@@ -1,4 +1,4 @@
-recursive-include src/sagemaker_mxnet_container *
+recursive-include src/sagemaker_mxnet *
 
 include VERSION
 include LICENSE
