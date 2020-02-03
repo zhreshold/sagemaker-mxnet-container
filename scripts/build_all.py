@@ -32,7 +32,7 @@ def _parse_args():
 
 def _build_image(build_dir, arch, prev_image_uri, py_version):
     if py_version == '2':
-        ls_tar_cmd = 'ls {}'.format(os.path.join('dist', 'sagemaker_mxnet_container*.tar.gz'))
+        ls_tar_cmd = 'ls {}'.format(os.path.join('dist', 'sagemaker_mxnet_training*.tar.gz'))
         tar_file = subprocess.check_output(ls_tar_cmd, shell=True).strip().decode('ascii')
         print('framework_support_installable: {}'.format(os.path.basename(tar_file)))
 

@@ -10,6 +10,3 @@
 # distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
-from __future__ import absolute_import
-
-from sagemaker_mxnet_container import training_utils  # noqa: F401
