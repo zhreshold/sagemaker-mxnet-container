@@ -14,7 +14,7 @@ ENV LANG=C.UTF-8 \
     PYTHONUNBUFFERED=1 \
     LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib" \
     PYTHONIOENCODING=UTF-8 \
-    SAGEMAKER_TRAINING_MODULE=sagemaker_mxnet.training:main
+    SAGEMAKER_TRAINING_MODULE=sagemaker_mxnet:training:main
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \

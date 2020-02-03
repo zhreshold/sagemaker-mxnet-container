@@ -15,7 +15,7 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
 ENV PYTHONIOENCODING=UTF-8
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
-ENV SAGEMAKER_TRAINING_MODULE sagemaker_mxnet.training:main
+ENV SAGEMAKER_TRAINING_MODULE sagemaker_mxnet:training:main
 ENV DGLBACKEND=mxnet
 
 RUN apt-get update \
